@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -11,7 +12,13 @@ namespace lab3.Network
     class ClientObject 
     {
         protected internal string Id { get; } = Guid.NewGuid().ToString();
-        Socket client;
+
+        public Socket client{get;private set;}
+        public Socket data { get;private set;}
+     
+        
+        public User activeUser { get; set; } = null;
+        public ClientStatus status { get; set; }
 
         public ClientObject(Socket tcpClient)
         {
